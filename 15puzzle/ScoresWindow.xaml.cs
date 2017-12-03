@@ -23,6 +23,7 @@ namespace _15puzzle
     
         public ScoresWindow()
         {
+            //REVIEW: Не мешать конструктор окна и его показ
             Show();
             InitializeComponent();
             DataContext = new ScoresWindowViewModel();

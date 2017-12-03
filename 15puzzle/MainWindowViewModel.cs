@@ -40,7 +40,7 @@ namespace _15puzzle
             }
         }
         public MainWindowViewModel()
-        {
+        {            
             GameClick = new Command();
             GameClick.ExecFunc = ChangeNums;
             NewGame = new Command();
@@ -54,7 +54,7 @@ namespace _15puzzle
         private void ChangeNums(object parameter)
         {
             if (parameter == null || !(parameter is string) || (string)parameter == string.Empty) return;
-            string[] btns = (string[])Buttons;
+            string[] btns = (string[])Buttons;            
             int ClickedTag = int.Parse((string)parameter) - 1;
             int x = ClickedTag % 4 + 1;
             int y = ClickedTag / 4 + 1;

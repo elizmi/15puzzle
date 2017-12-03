@@ -48,6 +48,9 @@ namespace _15puzzle
             string url = $"https://api.vk.com/method/wall.post?access_token={token}&owner_id=-157712266&message=My score is {moves}";
             try
             {
+                //REVIEW: Я об этом уже говорил! Что будет, если:
+                //1. url некорректен
+                //2. оборвалась связь в момент запроса
                 string response = new StreamReader(new WebClient().OpenRead(url)).ReadToEnd();
                 if (response.ToLower().Contains("error"))
                     MessageBox.Show("Your result was not posted");
@@ -55,6 +58,7 @@ namespace _15puzzle
                 {
                     Process.Start("https://vk.com/public157712266");
                 }
+                //REVIEW: Кто будет закрывать поток? И как?          
             }
             catch (Exception e)
             {

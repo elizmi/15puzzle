@@ -73,7 +73,7 @@ namespace _15puzzle
             Share.ExecFunc = ShareFunc;
         }
         private void CloseWindowFunc(object parameter)
-        {
+        {            
             if (!(parameter is Window) || parameter == null) return;
             else ((Window)parameter).Close();
         }
@@ -94,7 +94,7 @@ namespace _15puzzle
                 {
                     db.Open();
                     reader = query.ExecuteReader();
-                    db.Close();
+                    db.Close();                    
                 }
                 catch { MessageBox.Show("Local database is inaccessible, your score would not be saved"); }
             }

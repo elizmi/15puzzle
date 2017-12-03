@@ -9,6 +9,7 @@ namespace _15puzzle
     {
         public WinWindow(int moves)
         {
+            //REVIEW: Не должно быть показа окна в конструкторе самого окна. Это разные действия, их надо отделять.
             Show();
             InitializeComponent();
             DataContext = new WinWindowViewModel(moves);
