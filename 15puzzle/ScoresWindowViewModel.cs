@@ -35,7 +35,7 @@ namespace _15puzzle
         public ScoresWindowViewModel()
         {
             Scores = new List<ScoreRow>();
-            using (SqlConnection db = new SqlConnection((new SQLConnectionString()).ConnectionString))
+            using (SqlConnection db = new SqlConnection(SQLConnectionString.MakeSQLConnectionString()))
             {
                 SqlCommand query = new SqlCommand("select name, score from Scores order by score asc", db);
                 SqlDataReader reader;

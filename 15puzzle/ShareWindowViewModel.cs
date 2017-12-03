@@ -48,22 +48,21 @@ namespace _15puzzle
             string url = $"https://api.vk.com/method/wall.post?access_token={token}&owner_id=-157712266&message=My score is {moves}";
             try
             {
-                //REVIEW: Я об этом уже говорил! Что будет, если:
-                //1. url некорректен
-                //2. оборвалась связь в момент запроса
-                string response = new StreamReader(new WebClient().OpenRead(url)).ReadToEnd();
-                if (response.ToLower().Contains("error"))
-                    MessageBox.Show("Your result was not posted");
-                else
+                using (StreamReader reader = new StreamReader(new WebClient().OpenRead(url)))
                 {
-                    Process.Start("https://vk.com/public157712266");
+                    string response = reader.ReadToEnd();
+                    if (response.ToLower().Contains("error"))
+                        MessageBox.Show("Your result was not posted");
+                    else
+                    {
+                        Process.Start("https://vk.com/public157712266");
+                    }
                 }
-                //REVIEW: Кто будет закрывать поток? И как?          
             }
             catch (Exception e)
             {
                 MessageBox.Show(e.Message);
-            }   
+            }
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propName)

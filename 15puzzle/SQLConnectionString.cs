@@ -7,17 +7,15 @@ using System.Threading.Tasks;
 
 namespace _15puzzle
 {
-    //REVIEW: Вообще, тут Singleton напрашивается. Или как минимум статика.
-    class SQLConnectionString
+    static class SQLConnectionString
     {
-        public string ConnectionString;
-        public SQLConnectionString()
+        static public string MakeSQLConnectionString()
         {
             SqlConnectionStringBuilder connectionstring = new SqlConnectionStringBuilder();
             connectionstring.IntegratedSecurity = true;
             connectionstring.DataSource = Environment.MachineName + "\\SQLEXPRESS";
             connectionstring.InitialCatalog = "15puzzle";
-            ConnectionString = connectionstring.ConnectionString;
+            return connectionstring.ConnectionString;
         }
     }
 }

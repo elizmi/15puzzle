@@ -73,7 +73,7 @@ namespace _15puzzle
             Share.ExecFunc = ShareFunc;
         }
         private void CloseWindowFunc(object parameter)
-        {            
+        {
             if (!(parameter is Window) || parameter == null) return;
             else ((Window)parameter).Close();
         }
@@ -86,7 +86,7 @@ namespace _15puzzle
                 MessageBox.Show(Validation.GetErrors(NameField)[0].ErrorContent.ToString());
                 return;
             }
-            using (SqlConnection db = new SqlConnection((new SQLConnectionString()).ConnectionString))
+            using (SqlConnection db = new SqlConnection(SQLConnectionString.MakeSQLConnectionString()))
             {
                 SqlCommand query = new SqlCommand($"insert into Scores ([name], score) values (N\'{NameField.Text}\', {moves})", db);
                 SqlDataReader reader;
@@ -94,7 +94,7 @@ namespace _15puzzle
                 {
                     db.Open();
                     reader = query.ExecuteReader();
-                    db.Close();                    
+                    db.Close();
                 }
                 catch { MessageBox.Show("Local database is inaccessible, your score would not be saved"); }
             }
@@ -104,6 +104,7 @@ namespace _15puzzle
         {
             Uri url = new Uri("https://oauth.vk.com/authorize?response_type=token&scope=wall,groups&client_id=6278853");
             Window w = new ShareWindow(url, moves);
+            w.Show();
         }
         public event PropertyChangedEventHandler PropertyChanged;
         private void OnPropertyChanged(string propName)

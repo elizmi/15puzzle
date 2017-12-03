@@ -14,8 +14,6 @@ namespace _15puzzle
     {
         public ShareWindow(Uri url, int moves)
         {
-            //REVIEW: Не мешайте конструктор окна и метод показа
-            Show();
             InitializeComponent();
             DataContext = new ShareWindowViewModel(url, moves);
         }
