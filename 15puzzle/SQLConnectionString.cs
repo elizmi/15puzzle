@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace _15puzzle
 {
+    //REVIEW: Вообще, тут Singleton напрашивается. Или как минимум статика.
     class SQLConnectionString
     {
         public string ConnectionString;
