@@ -7,7 +7,7 @@
         xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
         xmlns:local="clr-namespace:_15puzzle"
         mc:Ignorable="d"
-        Title="VK Auth" Height="300" Width="600" ResizeMode="NoResize">
+        Title="VK Auth" Height="400" Width="700" ResizeMode="NoResize">
     <Grid>
         <WebBrowser Name="Browser" local:WebBrowserUtility.BindableSource="{Binding URL}">
             <i:Interaction.Triggers>

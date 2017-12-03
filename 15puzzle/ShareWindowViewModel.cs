@@ -44,6 +44,7 @@ namespace _15puzzle
             string error = HttpUtility.ParseQueryString(fragment).Get("error");
             string error_description = HttpUtility.ParseQueryString(fragment).Get("error_description");
             if (error != null) { MessageBox.Show(error_description); return; }
+            if (token == null) return;
             string url = $"https://api.vk.com/method/wall.post?access_token={token}&owner_id=-157712266&message=My score is {moves}";
             try
             {
